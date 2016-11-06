@@ -4,9 +4,7 @@ SVMGrad is a simple standalone library used to evaluate an SVM decision function
 Note: This code is based on the [ASVM library](https://github.com/epfl-lasa/A-SVM) provided by Dr. Ashwini Shukla.
 
 ##Installation
-bla bla bla
-
-###LINUX
+####LINUX
 Extract the SVMGrad folder to any location.
 ```
 $ cd <SVM_grad_root_dir>
