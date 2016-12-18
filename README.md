@@ -16,4 +16,4 @@ $ sudo make install
 bla bla bla
 
 
-Note: This code is derived on the [ASVM library](https://github.com/epfl-lasa/A-SVM) provided by Dr. Ashwini Shukla.
+Note: Part of this code was derived from the [ASVM library](https://github.com/epfl-lasa/A-SVM) implemented by Dr. Ashwini Shukla.
