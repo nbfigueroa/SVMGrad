@@ -26,7 +26,11 @@ In the ```./matlab/``` folder you can find an example script together with sampl
 ```
 2d_svmgrad_example.m
 ```
+This should generate the following plot, which shows the svm ```Gamma``` being evaluated on a mesh of points as well as its gradient ```DGamma```:
 
+<p align="center">
+<img src="https://github.com/nbfigueroa/SVMGrad/blob/master/img/2d-gamma.png" width="700">
+</p>
 
 ##C++ Installation
 Extract the SVMGrad folder to any location.
