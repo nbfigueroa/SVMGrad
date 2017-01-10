@@ -1,7 +1,34 @@
 # SVMGrad
-SVMGrad is a simple standalone library used to evaluate an SVM decision function (from a pre-learned SVM), as well as its first (gradient) and second order derivative, which can be used to compute the Jacobian and Hessian matrices of the function.
+SVMgrad is a compact library used to evaluate the decision function of a
+Gaussian RBF Kernel Support Vector Machine, as well as the its first and
+Second Derivative.
 
-##Installation
+```
+y = sign(Gamma(x))
+Gamma   = \sum_{i=1}^{N_sv}\alpha_iy_ik(x,x_i) + b 
+DGamma  = \sum_{i=1}^{N_sv}-1/2\sigma^2\alpha_iy_ik(x,x_i)(x-x_i)
+DDGamma = ...
+```
+The evaluated SVM model can be learned with any toolbox: libSVM, SMVlight, EnsembleSVM, etc.. as long as the user creates a 
+simplified struct model. In MATLAB one should create the following struct instance:
+```
+model.nClass: # of Classes (2 for binary)
+model.nSV   : Total # of Support Vectors
+model.b     : Offset for classification function
+model.sigma : Gaussian RBF kernel Width
+model.alphas: Values for the Lagrangian multipliers per SVs  [nSV]
+model.y     : Labels corresponding to SVs                    [nSV]
+model.SVs   : Set of Support Vectors                         [DxnSV]
+```
+
+##Matlab Usage
+In the ```./matlab/``` folder you can find an example script together with sample 2d datasets and learnt models (through libSVM). Make sure to add all subfolders to your current directory and run the following script:
+```
+2d_svmgrad_example.m
+```
+
+
+##C++ Installation
 Extract the SVMGrad folder to any location.
 ```
 $ cd <SVM_grad_root_dir>
@@ -12,7 +39,7 @@ $ make
 $ sudo make install
 ```
 
-##Usage
+##C++ Usage
 bla bla bla
 
 
