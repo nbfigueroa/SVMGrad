@@ -13,12 +13,11 @@
 %  simplified struct model  with the following fields:
 %
 %  model.nClass: # of Classes (2 for binary)
-%  model.nSV   : Total # of Support Vectors
-%  model.b     : Offset for classification function
-%  model.sigma : Gaussian RBF kernel Width
-%  model.alphas: Values for the Lagrangian multipliers per SVs      [nSV]
-%  model.y     : Labels corresponding to SVs                        [nSV]
-%  model.SVs   : Set of Support Vectors                             [DxnSV]
+%  model.nSV    : Total # of Support Vectors
+%  model.b      : Offset for classification function
+%  model.sigma  : Gaussian RBF kernel Width
+%  model.yalphas: Values for the Lagrangian multipliers*Label per SVs [1xnSV]
+%  model.SVs    : Set of Support Vectors                              [DxnSV]
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load 2D example Dataset and model learned through libSVM
@@ -31,10 +30,10 @@ svmgrad.nClass  = model.nr_class;
 svmgrad.nSV     = model.totalSV;
 svmgrad.b       = -model.rho;
 svmgrad.sigma   = options.sigma;
-svmgrad.yalphas = model.sv_coef; %\alpha_*y_i
+svmgrad.yalphas = model.sv_coef'; %\alpha_*y_i
 svmgrad.SVs     = full(model.SVs)';
 
-%% Visualize Decision Function and gradients
+%% Visualize Decision Function and gradients (Only for 2d dataset)
 plot_svmgrad_boundary(X, labels, svmgrad,  'draw');
 
 %% Sample classifier and gradient evaluation for on query point
@@ -44,3 +43,6 @@ value       = calculateClassifier( svmgrad,  query_point);
 gradient    = calculateClassifierDerivative( svmgrad, query_point);
 toc;
 
+%% Write SVMGrad Struct to .txt file for C++ Usage
+filename = './mat/2d-example.txt';
+writeSVMGrad(svmgrad, filename);

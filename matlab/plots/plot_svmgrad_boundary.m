@@ -76,8 +76,8 @@ SVs              = model.SVs;
 
 % Plot Support Vectors
 scatter(SVs(1,:),SVs(2,:),70,'o','MarkerEdgeColor', [1 1 1], 'MarkerEdgeColor', [1 1 1], 'LineWidth', 1.5);
-legend_names = {'\Gamma(x) Self-Collision Region','\Gamma(x) = 0 (Classification Boundary)', '\Gamma(x)= +1 (Self-Collision Boundary)','y = +1 (Free Robot Configurations)','y = -1 (Collided Robot Configurations)'};
-legend(legend_names,'Location','NorthWest');
+legend_names = {'\Gamma(x) Self-Collision Region','\Gamma(x) = 0 (Classifier Boundary)', '\Gamma(x)= +1 (Collision Boundary)','y = +1 (Free Configurations)','y = -1 (Collided Configurations)'};
+legend(legend_names,'Location','NorthWest', 'FontSize',15);
 
 % Extract point for gradient computation
 [id] = find(vals>1);
@@ -85,7 +85,7 @@ rand_id = randperm(length(id));
 grad_id = id(rand_id(1:round(length(id)/3)));
 quiver(X(grad_id), Y(grad_id), U(grad_id), V(grad_id), 'Color', 'k', 'AutoScale','on', 'LineWidth',2);
 
-xlabel('x_1 (Robot 1)'); ylabel('x_2 (Robot 2)');
+xlabel('x_1 (Robot 1)', 'FontSize',15); ylabel('x_2 (Robot 2)', 'FontSize',15);
 % title(sprintf('Sample \\Gamma(x) for 2 robots with 1 DOF.'));        
 
 axis equal
