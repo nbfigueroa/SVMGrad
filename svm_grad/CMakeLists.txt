@@ -5,6 +5,7 @@ project(svm_grad)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED)
+find_package(Armadillo REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -96,8 +97,8 @@ find_package(catkin REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES svm_grad
+  INCLUDE_DIRS include
+  LIBRARIES SVMGrad
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
 )
@@ -108,12 +109,10 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-# include_directories(include)
+include_directories(include ${ARMADILLO_INCLUDE_DIRS})
 
 ## Declare a C++ library
-# add_library(svm_grad
-#   src/${PROJECT_NAME}/svm_grad.cpp
-# )
+add_library(SVMGrad src/SVMGrad.cpp include/SVMGrad.h)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries

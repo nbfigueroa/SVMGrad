@@ -37,10 +37,10 @@ private:
     SVMGradModels SVMGradModel;
 
 public:       
-    SVMGrad(char *f_SVMGradmodel)
+    SVMGrad(char *f_SVMGradmodel);
     double calculateClass(vec xi);
     double calculateGamma(vec xi);
-    double calculateGammaGrad(vec xi);
+    double calculateGammaDerivative(vec xi);
 };
 
 
