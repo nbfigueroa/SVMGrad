@@ -1,5 +1,5 @@
-# SVMGrad
-SVMgrad is a compact library used to evaluate the decision function of a
+# SVM-Grad
+SVM-Grad is a compact library used to evaluate the decision function of a
 Gaussian RBF Kernel Support Vector Machine, as well as the its first and
 Second Derivative.
 
@@ -32,19 +32,21 @@ This should generate the following plot, which shows the svm ```Gamma``` being e
 <img src="https://github.com/nbfigueroa/SVMGrad/blob/master/img/2d-gamma.png" width="700">
 </p>
 
-##C++ Installation
-Extract the SVMGrad folder to any location.
+##C++ Installation (Catkin)
+These instrutions are assuming you have a ROS environment and use catkin workspace to compile code. Clone this respository in your ```./src``` folder and compile
+
 ```
-$ cd <SVM_grad_root_dir>
-$ mkdir build
-$ cd build
-$ ccmake ..
-$ make
-$ sudo make install
+$ cd ~/catkin_ws/
+$ catkin_make
+```
+This will compile the SVM-grad library as well as a testing node. To run the testing node, type the following:
+```
+rosrun svm-grad svm-grad-test
 ```
 
 ##C++ Usage
+```
 bla bla bla
-
+```
 
 Note: Part of this code was derived from the [ASVM library](https://github.com/epfl-lasa/A-SVM) implemented by Dr. Ashwini Shukla.
