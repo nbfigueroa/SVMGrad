@@ -37,8 +37,8 @@ for i = 1:size(X, 2)
    gradients = zeros(length(X_row),2);   
    for ii=1:length(X_row)
         x = X_row(:,ii)';
-        values(ii,:)    = calculateClassifier( model, x' );
-        gradients(ii,:) = calculateClassifierDerivative( model, x' )';
+        values(ii,:)    = calculateGamma( model, x' );
+        gradients(ii,:) = calculateGammaDerivative( model, x' )';
    end
    vals(:,i) = values;
    U(:,i)    = gradients(:,1);

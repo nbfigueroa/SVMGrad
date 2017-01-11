@@ -12,7 +12,8 @@
 %  libSVM, SMVlight, EnsembleSVM, etc as long as the user creates a 
 %  simplified struct model  with the following fields:
 %
-%  model.nClass: # of Classes (2 for binary)
+%  model.D      : Dat 
+%  model.nClass : # of Classes (2 for binary)
 %  model.nSV    : Total # of Support Vectors
 %  model.b      : Offset for classification function
 %  model.sigma  : Gaussian RBF kernel Width
@@ -26,7 +27,7 @@ load('./mat/2d-example2.mat')
 
 %% Create Simplified Struct Model for SVMGrad from libSVM Model
 svmgrad = [];
-svmgrad.nClass  = model.nr_class;
+svmgrad.D       = size(X,2);
 svmgrad.nSV     = model.totalSV;
 svmgrad.b       = -model.rho;
 svmgrad.sigma   = options.sigma;
@@ -39,8 +40,9 @@ plot_svmgrad_boundary(X, labels, svmgrad,  'draw');
 %% Sample classifier and gradient evaluation for on query point
 query_point = X(1,:)';
 tic;
-value       = calculateClassifier( svmgrad,  query_point);
-gradient    = calculateClassifierDerivative( svmgrad, query_point);
+class       = calculateClass( svmgrad,  query_point)
+value       = calculateGamma( svmgrad,  query_point)
+gradient    = calculateGammaDerivative( svmgrad, query_point)
 toc;
 
 %% Write SVMGrad Struct to .txt file for C++ Usage
