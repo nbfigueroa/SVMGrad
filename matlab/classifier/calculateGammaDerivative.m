@@ -1,4 +1,4 @@
-function [ gradient ] = calculateClassifierDerivative( model, query_point )
+function [ gradient ] = calculateGammaDerivative( model, query_point )
 % This function calculates the gradient of the classifier function at the
 % given point
 %
