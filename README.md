@@ -1,5 +1,5 @@
-# SVM-grad
-SVM-grad is a compact library used to evaluate the decision function of a
+# SVMGrad
+SVMGrad is a compact library used to evaluate the decision function of a
 Gaussian RBF Kernel Support Vector Machine, as well as the its first and
 Second Derivative.
 
