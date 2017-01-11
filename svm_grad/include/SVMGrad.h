@@ -38,9 +38,21 @@ private:
 
 public:       
     SVMGrad(char *f_SVMGradmodel);
+
+    // Armadillo input
     double calculateClass(vec xi);
     double calculateGamma(vec xi);
-    double calculateGammaDerivative(vec xi);
+    vec calculateGammaDerivative(vec xi);
+    double getKernel(vec xi);
+    double getKernelDerivative(vec xi);
+
+
+    // Eigen input
+//    double calculateGamma(Eigen::VectorXf xi);
+//    Eigen::VectorXf double calculateGammaDerivative(Eigen::VectorXf xi);
+//    void eigen2arma(Eigen::VectorXf x, vec& x);
+//    void arma2eigen(vec x, Eigen::VectorXf& x);
+
 };
 
 
