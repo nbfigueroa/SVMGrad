@@ -32,9 +32,13 @@ This should generate the following plot, which shows the svm ```Gamma``` being e
 <img src="https://github.com/nbfigueroa/SVMGrad/blob/master/img/2d-gamma.png" width="700">
 </p>
 
-##C++ Installation (Catkin)
-These instrutions are assuming you have a ROS environment and use catkin workspace to compile code. Clone this respository in your ```./src``` folder and compile
-
+##C++ Installation (Catkin package)
+These instrutions are assuming you have a ROS environment and use catkin workspace to compile code. 
+Clone this respository in your ```./src``` folder and make sure that you have the [armadillo](http://arma.sourceforge.net/) library, you can install this by 
+```
+sudo apt-get install libarmadillo-dev
+```
+Then, compile the package
 ```
 $ cd ~/catkin_ws/
 $ catkin_make
