@@ -1,5 +1,5 @@
-# SVM-Grad
-SVM-Grad is a compact library used to evaluate the decision function of a
+# SVM-grad
+SVM-grad is a compact library used to evaluate the decision function of a
 Gaussian RBF Kernel Support Vector Machine, as well as the its first and
 Second Derivative.
 
@@ -39,7 +39,7 @@ These instrutions are assuming you have a ROS environment and use catkin workspa
 $ cd ~/catkin_ws/
 $ catkin_make
 ```
-This will compile the SVM-grad library as well as a testing node. To run the testing node, type the following:
+This will compile the svm-grad library as well as a testing node. To run the testing node, type the following:
 ```
 rosrun svm-grad svm-grad-test
 ```
