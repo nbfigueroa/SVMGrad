@@ -47,8 +47,8 @@ $ catkin_make
 First one must have an svm model in the format requested by ```svm_grad``` class, this can be generated with the ```writeSVMGradModel.m``` function in the matlab folder, then:
 ```
 SVMGrad svm_(modelFilename);
-x = load vector (could Eigen or Armadillo format)
-svm_.preComputeKernel(true); //for fast derivative computation
+x = load vector...              // Could Eigen::VectorXd or arma::vec<double> format
+svm_.preComputeKernel(true);    // For fast derivative computation
 gamma       = svm_.calculateGamma(x);
 gamma_grad  = svm_.calculateGammaDerivative(x);
 ```
