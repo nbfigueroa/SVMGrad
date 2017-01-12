@@ -65,8 +65,8 @@ int
 main (int argc, char **argv)
 {
     string package_path  = "/home/nbfigueroa/dev/catkin_ws/src/SVMGrad/";
-    string modelFilename = package_path + "matlab/models/36d-robotcollision-svm.txt";
-    string dataFilename  = package_path + "matlab/models/36d-robotcollision-data.txt";
+    string modelFilename = package_path + "matlab/models/2d-example2-svm.txt";
+    string dataFilename  = package_path + "matlab/models/2d-example2-data.txt";
 
     SVMGrad svm_(modelFilename);
     SVMTestData data_;
@@ -92,9 +92,8 @@ main (int argc, char **argv)
         clock_t t;
         t = clock();
         {
-//        gamma         = svm_.calculateGamma(x);
-//        gamma_grad    = svm_.calculateGammaDerivative(x);
-        svm_.calculateGammaAndDerivative(x, gamma, gamma_grad);
+            gamma         = svm_.calculateGamma(x);
+            gamma_grad    = svm_.calculateGammaDerivative(x);
         }
         t = clock() - t;
 
@@ -135,9 +134,9 @@ main (int argc, char **argv)
         clock_t t;
         t = clock();
         {
-//        gamma       = svm_.calculateGamma(x_eig);
-//        grad_eig    = svm_.calculateGammaDerivative(x_eig);
-        svm_.calculateGammaAndDerivative(x_eig, gamma, grad_eig);
+           gamma       = svm_.calculateGamma(x_eig);
+           grad_eig    = svm_.calculateGammaDerivative(x_eig);
+
         }
         t = clock() - t;
 
