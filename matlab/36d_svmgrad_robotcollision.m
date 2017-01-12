@@ -21,24 +21,21 @@
 %  model.SVs    : Set of Support Vectors                              [DxnSV]
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Load 2D example Dataset and model learned through libSVM
+%% Load 36D Robot Self-Collision Dataset and model learned through libSVM
 clc; clear all; close all;
-load('./models/2d-example2.mat')
+load('./models/36d-robot-collision.mat')
 
 %% Create Simplified Struct Model for SVMGrad from libSVM Model
 svmgrad = [];
-svmgrad.D       = size(X,2);
+svmgrad.D       = size(X_train,2);
 svmgrad.nSV     = model.totalSV;
 svmgrad.b       = -model.rho;
 svmgrad.sigma   = options.sigma;
 svmgrad.yalphas = model.sv_coef'; %\alpha_*y_i
 svmgrad.SVs     = full(model.SVs)';
 
-%% Visualize Decision Function and gradients (Only for 2d dataset)
-plot_svmgrad_boundary(X, labels, svmgrad,  'draw');
-
 %% Sample classifier and gradient evaluation for on query point
-query_point = X(randi(length(X)),:)';
+query_point = X_train(randi(length(X_train)),:)';
 tic;
 class       = calculateClass( svmgrad,  query_point)
 value       = calculateGamma( svmgrad,  query_point)
@@ -46,14 +43,14 @@ gradient    = calculateGammaDerivative( svmgrad, query_point)
 toc;
 
 %% Write SVMGrad Struct to .txt file for C++ Usage
-filename = './models/2d-example2-svm.txt';
+filename = './models/36d-robotcollision-svm.txt';
 writeSVMGrad(svmgrad, filename);
 
 %% Write Testing Data for SVMGRad
-filename = './models/2d-example2-data.txt';
+filename = './models/36d-robotcollision-data.txt';
 ntest    = 500;
-randidx  = randperm(length(X));
-x_test   = X(randidx(1:ntest),:)';
+randidx  = randperm(length(X_train));
+x_test   = X_train(randidx(1:ntest),:)';
 y        = zeros(1, ntest);
 value    = zeros(1, ntest);
 gradient = zeros(svmgrad.D, ntest);

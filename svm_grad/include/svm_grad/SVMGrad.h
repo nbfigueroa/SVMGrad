@@ -1,6 +1,10 @@
 #ifndef __SVMGrad_H__
 #define __SVMGrad_H__
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <fstream>
 #include "armadillo"
 
 using namespace arma;
@@ -18,11 +22,10 @@ using namespace std;
 struct SVMGradModels{
     unsigned int D;
     unsigned int nSV;
-    double gamma;
+    double sigma;
     double b;
     vec yalphas;
     mat SVs;
-	double mux;
 };
 
 /* SVMGrad: This class computes the following function from an SMVGradModel
@@ -35,23 +38,27 @@ class SVMGrad
 {
 private:
     SVMGradModels SVMGradModel;
+    vec    diffx;
+    double lambda; // lambda = 1/(2*sigma^2)
+    double y;      // y      = sign(Gamma(x))
 
 public:       
-    SVMGrad(char *f_SVMGradmodel);
+    SVMGrad(string& f_SVMGradmodel);
 
     // Armadillo input
-    double calculateClass(vec xi);
-    double calculateGamma(vec xi);
-    vec calculateGammaDerivative(vec xi);
-    double getKernel(vec xi);
-    double getKernelDerivative(vec xi);
+    double calculateClass(vec x);
+    double calculateGamma(vec x);
+    double getKernel(vec x, unsigned int s);
+
+    vec  getKernelDerivative(vec x);
+    vec calculateGammaDerivative(vec x);
 
 
     // Eigen input
-//    double calculateGamma(Eigen::VectorXf xi);
-//    Eigen::VectorXf double calculateGammaDerivative(Eigen::VectorXf xi);
 //    void eigen2arma(Eigen::VectorXf x, vec& x);
 //    void arma2eigen(vec x, Eigen::VectorXf& x);
+//    double calculateGamma(Eigen::VectorXf xi);
+//    Eigen::VectorXf double calculateGammaDerivative(Eigen::VectorXf xi);
 
 };
 

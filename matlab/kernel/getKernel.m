@@ -38,8 +38,8 @@ switch type
     case 'poly'
         ker_val = (x1'*x2+1)^lambda;
     case 'rbf'
-        ker_val = exp(-(lambda.*(x1-x2))'*(x1-x2));
-%         ker_val = exp(-lambda.*norm(x1-x2)^2);
+%         ker_val = exp(-(lambda.*(x1-x2))'*(x1-x2));
+        ker_val = exp(-lambda.*norm(x1-x2)^2);
     case 'rbf-linear'
         ker_val = exp(-lambda.rbf*norm(x1-x2)^2) + lambda.linear*x1'*x2;
     otherwise
