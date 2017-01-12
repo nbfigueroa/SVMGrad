@@ -42,7 +42,7 @@ Then, compile the package
 $ cd ~/catkin_ws/
 $ catkin_make
 ```
-This will compile the svm-grad library as well as a testing node. To run the testing node, type the following:
+This will compile the svm_grad library as well as a testing node. To run the testing node, type the following:
 ```
 rosrun svm_grad test_svmgrad
 ```
