@@ -45,7 +45,7 @@ $ catkin_make
 ```
 This will compile the svm-grad library as well as a testing node. To run the testing node, type the following:
 ```
-rosrun svm-grad svm-grad-test
+rosrun svm_grad test_svmgrad
 ```
 
 ##C++ Usage
