@@ -24,7 +24,7 @@ find_package(Armadillo REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include/svm_grad
   LIBRARIES svm_grad
 #  CATKIN_DEPENDS other_catkin_pkg
 #  DEPENDS system_lib
@@ -42,17 +42,19 @@ include_directories(
 )
 
 ## Declare a C++ library
-add_library(${PROJECT_NAME} src/svm_grad/SVMGrad.cpp include/svm_grad/SVMGrad.h)
-target_link_libraries ( ${PROJECT_NAME} armadillo)
+add_library(svm_grad src/svm_grad/svm_grad.cpp)
+target_link_libraries (svm_grad 
+	${catkin_LIBRARIES}
+	armadillo)
 
 
 ## Declare a C++ executable
 add_executable(test_svmgrad src/test_svmgrad.cpp)
-
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(test_svmgrad
    svm_grad
    ${catkin_LIBRARIES}
  )
+
 

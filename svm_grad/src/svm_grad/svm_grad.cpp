@@ -1,4 +1,4 @@
-#include "SVMGrad.h"
+#include "svm_grad.h"
 
 SVMGrad::SVMGrad(string& f_SVMGradmodel)
 {

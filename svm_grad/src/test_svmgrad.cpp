@@ -3,7 +3,7 @@
 #include <time.h>
 #include "armadillo"
 #include "eigen3/Eigen/Dense"
-#include "SVMGrad.h"
+#include "svm_grad.h"
 
 using namespace std;
 using namespace arma;
