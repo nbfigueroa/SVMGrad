@@ -46,6 +46,29 @@ This will compile the svm_grad library as well as a testing node. To run the tes
 ```
 rosrun svm_grad test_svmgrad
 ```
+This test will load a stored svm-model (the one generating the figure above) and a testing dataset. It will check for numerical errors and output average function computation time for [Armadillo](http://arma.sourceforge.net/) inputs as well as [Eigen](http://eigen.tuxfamily.org/index.php?title=Main_Page) inputs:
+```
+SVM Model: /home/nbfigueroa/dev/catkin_ws/src/SVMGrad/matlab/models/2d-example2-svm.txt
+model.D: 2
+model.nSV: 40
+model.b: -0.962694
+model.sigma: 0.1
+
+SVM Testing File: /home/nbfigueroa/dev/catkin_ws/src/SVMGrad/matlab/models/2d-example2-data.txt
+data.D: 2
+data.M: 500
+
+---Testing Gamma and DGamma function with Armadillo Inputs---
+Average Gamma Numerical Error: 4.8965e-09
+Average Norm DGamma Numerical Error: 3.59996e-08
+Average Time -Gamma+DGamma Calculation-: 6.944e-06
+
+---Testing Gamma and DGamma function with Eigen Inputs---
+Average Gamma Numerical Error: 4.8965e-09
+Average Norm DGamma Numerical Error: 3.59996e-08
+Average Time -Gamma+DGamma Calculation-: 7.248e-06
+
+```
 
 ##C++ Usage
 ```
