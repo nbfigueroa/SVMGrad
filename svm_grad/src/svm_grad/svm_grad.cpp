@@ -1,7 +1,18 @@
 #include "svm_grad.h"
 
+
+SVMGrad::SVMGrad(){
+
+}
+
 SVMGrad::SVMGrad(string& f_SVMGradmodel)
 {
+
+    loadModel(f_SVMGradmodel);
+    storeKernel = false;
+}
+
+void SVMGrad::loadModel(string &f_SVMGradmodel){
 
     cout << "SVM Model: " << f_SVMGradmodel << endl;
     ifstream fin(f_SVMGradmodel.c_str());
@@ -32,11 +43,11 @@ SVMGrad::SVMGrad(string& f_SVMGradmodel)
     }
     fin.close();
 
-    lambda = 1/(2*SVMGradModel.sigma*SVMGradModel.sigma);
-    storeKernel = false;
-    diffx = zeros<vec>(SVMGradModel.D);
-}
 
+    lambda = 1/(2*SVMGradModel.sigma*SVMGradModel.sigma);
+    diffx = zeros<vec>(SVMGradModel.D);
+
+}
 
 void SVMGrad::preComputeKernel(bool precompute){
    storeKernel = precompute;

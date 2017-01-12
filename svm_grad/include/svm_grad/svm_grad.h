@@ -51,7 +51,9 @@ private:
     double y;      // y      = sign(Gamma(x))
 
 public:       
+    SVMGrad();
     SVMGrad(string& f_SVMGradmodel);
+    void loadModel(string& f_SVMGradmodel);
 
     // Armadillo input
     void preComputeKernel(bool precompute);
