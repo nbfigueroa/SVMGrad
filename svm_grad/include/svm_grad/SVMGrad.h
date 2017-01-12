@@ -6,9 +6,14 @@
 #include <math.h>
 #include <fstream>
 #include "armadillo"
+#include "eigen3/Eigen/Dense"
 
-using namespace arma;
+
+//using namespace arma;
 using namespace std;
+using namespace arma;
+
+typedef Eigen::VectorXd vecEig;
 
 /* SVMGrad: This structure holds the parameters of an RBF-SVM
  * D:       Datapoint Dimension
@@ -39,6 +44,9 @@ class SVMGrad
 private:
     SVMGradModels SVMGradModel;
     vec    diffx;
+    vec    kernelVec;
+    mat    diffxMat;
+    bool   storeKernel;
     double lambda; // lambda = 1/(2*sigma^2)
     double y;      // y      = sign(Gamma(x))
 
@@ -46,19 +54,20 @@ public:
     SVMGrad(string& f_SVMGradmodel);
 
     // Armadillo input
+    void preComputeKernel(bool precompute);
     double calculateClass(vec x);
     double calculateGamma(vec x);
     double getKernel(vec x, unsigned int s);
-
-    vec  getKernelDerivative(vec x);
+    vec getKernelDerivative(vec x, unsigned int s);
     vec calculateGammaDerivative(vec x);
-
+    void calculateGammaAndDerivative(vec x, double& gamma, vec& gamma_der);
 
     // Eigen input
-//    void eigen2arma(Eigen::VectorXf x, vec& x);
-//    void arma2eigen(vec x, Eigen::VectorXf& x);
-//    double calculateGamma(Eigen::VectorXf xi);
-//    Eigen::VectorXf double calculateGammaDerivative(Eigen::VectorXf xi);
+    void eigen2arma(vecEig x_in, vec& x_out);
+    void arma2eigen(vec x_in, vecEig& x_out);
+    double calculateGamma(vecEig x);
+    vecEig calculateGammaDerivative(vecEig x);
+    void calculateGammaAndDerivative(vecEig x, double& gamma, vecEig& gamma_der);
 
 };
 
