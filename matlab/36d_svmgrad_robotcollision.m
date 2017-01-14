@@ -35,7 +35,7 @@ svmgrad.yalphas = model.sv_coef'; %\alpha_*y_i
 svmgrad.SVs     = full(model.SVs)';
 
 %% Sample classifier and gradient evaluation for on query point
-query_point = X_train(randi(length(X_train)),:)';
+% query_point = X_train(randi(length(X_train)),:)';
 tic;
 class       = calculateClass( svmgrad,  query_point)
 value       = calculateGamma( svmgrad,  query_point)

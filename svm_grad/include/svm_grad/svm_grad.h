@@ -50,6 +50,9 @@ private:
     double lambda; // lambda = 1/(2*sigma^2)
     double y;      // y      = sign(Gamma(x))
 
+    inline double getKernel(vec x, unsigned int s);
+    inline vec getKernelDerivative(vec x, unsigned int s);
+
 public:       
     SVMGrad();
     SVMGrad(string& f_SVMGradmodel);
@@ -59,8 +62,6 @@ public:
     void preComputeKernel(bool precompute);
     double calculateClass(vec x);
     double calculateGamma(vec x);
-    double getKernel(vec x, unsigned int s);
-    vec getKernelDerivative(vec x, unsigned int s);
     vec calculateGammaDerivative(vec x);
     void calculateGammaAndDerivative(vec x, double& gamma, vec& gamma_der);
 

@@ -69,6 +69,8 @@ double SVMGrad::calculateGamma(vec x)
 {
 
     double gamma_val = 0.0000;
+    kernelVec = zeros<vec>(SVMGradModel.nSV);
+    diffxMat  = zeros<mat>(SVMGradModel.D, SVMGradModel.nSV);
 
     for(unsigned int s=0; s<SVMGradModel.nSV; s++ ){
         // \alpha_i*y_i*exp(-lamdba*||x-x_i||^2))
@@ -131,6 +133,9 @@ void SVMGrad::calculateGammaAndDerivative(vec x, double& gamma, vec& gamma_der)
     gamma     = 0.0000;
     gamma_der  = zeros<vec>(SVMGradModel.D);
 
+    kernelVec = zeros<vec>(SVMGradModel.nSV);
+    diffxMat  = zeros<mat>(SVMGradModel.D, SVMGradModel.nSV);
+
     for(unsigned int s=0; s<SVMGradModel.nSV; s++ ){
         // \alpha_i*y_i*exp(-lamdba*||x-x_i||^2))
         gamma += SVMGradModel.yalphas(s)*getKernel(x, s);
@@ -157,7 +162,7 @@ void SVMGrad::calculateGammaAndDerivative(vecEig x, double& gamma, vecEig& gamma
 }
 
 
-double SVMGrad::getKernel(vec x, unsigned int s){
+inline double SVMGrad::getKernel(vec x, unsigned int s){
 
     double kernel = 0.0;
 
@@ -178,7 +183,7 @@ double SVMGrad::getKernel(vec x, unsigned int s){
 }
 
 
-vec SVMGrad::getKernelDerivative(vec x, unsigned int s){
+inline vec SVMGrad::getKernelDerivative(vec x, unsigned int s){
 
     double kernel  = 0.0;
     vec kernelDer  = zeros<vec>(SVMGradModel.D);
