@@ -23,7 +23,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load 36D Robot Self-Collision Dataset and model learned through libSVM
 clc; clear all; close all;
-load('./models/36d-robot-collision-24k.mat')
+load('./models/36d-robot-collision-6k.mat')
 
 %% Create Simplified Struct Model for SVMGrad from libSVM Model
 svmgrad = [];
@@ -43,11 +43,11 @@ gradient    = calculateGammaDerivative( svmgrad, query_point)
 toc;
 
 %% Write SVMGrad Struct to .txt file for C++ Usage
-filename = './models/36d-robotcollision-svm-24k.txt';
+filename = './models/36d-robotcollision-svm-6k.txt';
 writeSVMGrad(svmgrad, filename);
 
 %% Write Testing Data for SVMGRad
-filename = './models/36d-robotcollision-data-24k.txt';
+filename = './models/36d-robotcollision-data-6k.txt';
 ntest    = 500;
 randidx  = randperm(length(X_train));
 x_test   = X_train(randidx(1:ntest),:)';
