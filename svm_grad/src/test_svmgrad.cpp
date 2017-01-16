@@ -65,8 +65,8 @@ int
 main (int argc, char **argv)
 {
     string package_path  = "/home/nbfigueroa/dev/catkin_ws/src/SVMGrad/";
-    string modelFilename = package_path + "matlab/models/36d-robotcollision-svm-120k.txt";
-    string dataFilename  = package_path + "matlab/models/36d-robotcollision-data-120k.txt";
+    string modelFilename = package_path + "matlab/models/36d-robotcollision-svm-60k.txt";
+    string dataFilename  = package_path + "matlab/models/36d-robotcollision-data-60k.txt";
 
     SVMGrad svm_(modelFilename);
     SVMTestData data_;
