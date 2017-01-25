@@ -45,12 +45,3 @@ grid on
 xlabel('$N_{sv}$','Interpreter','Latex','FontSize',14); ylabel('Computation time [ms]','Interpreter','Latex','FontSize',14)
 legend({'$\Gamma(x)$ and $\nabla\Gamma(x)$ Evaluation ', 'IK Solver'},'Interpreter','Latex', 'FontSize',14)
 
-%% Plot Classifier Performance
-figure('Color',[1 1 1])
-[ax,hline1,hline2]=plotyy(model_size, mean_coll,model_size,data_perc);
-delete(hline1);
-delete(hline2);
-hold on;
-plot(model_size,data_perc, '--og','LineWidth',2)
-set(gca,'xscale','log')
-xlabel('$N_{sv}$','Interpreter','Latex','FontSize',14);
