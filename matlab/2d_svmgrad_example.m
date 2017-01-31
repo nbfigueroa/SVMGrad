@@ -35,7 +35,11 @@ svmgrad.yalphas = model.sv_coef'; %\alpha_*y_i
 svmgrad.SVs     = full(model.SVs)';
 
 %% Visualize Decision Function and gradients (Only for 2d dataset)
-plot_svmgrad_boundary(X, labels, svmgrad,  'draw');
+plot_svmgrad_boundary(X, labels, svmgrad,  'draw', 'grad');
+
+%% Visualize Decision Function and gradients (Only for 2d dataset)
+grad_points= [0.6256 0.8693;  0.5363 0.7807; 0.7291 0.7728;0.6231 0.6629;];
+plot_svmgrad_boundary_lines(X, labels, svmgrad, grad_points);
 
 %% Sample classifier and gradient evaluation for one query point
 query_point = X(randi(length(X)),:)';

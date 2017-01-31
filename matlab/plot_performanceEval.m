@@ -7,17 +7,18 @@
 
 clear all; clc; close all;
 %% Load full dataset (Train and Test)
-load('./models/Full-Collision-Avoidance-Dataset.mat')
+load('./models/Fender/Fender-Collision-Avoidance-Dataset.mat')
 
 %% Load models
-model_names = dir('./models/*36d-*.mat'); 
+model_names = dir('./models/Fender/*36D-*.mat'); 
 nModels = length(model_names);
 models  = {};
 for i=1:nModels
-    models{i,1} = load(strcat('./models/',model_names(i).name));
+    models{i,1} = load(strcat('./models/Fender/',model_names(i).name));
 end
 %% Compute Error Rates for each model on test set
-numSamples  = round(length(y_test));
+% numSamples  = round(length(y_test));
+numSamples  = 500000;
 model_sizes = zeros(1,nModels);    
 ACC = zeros(1,nModels);
 F1  = zeros(1,nModels);
@@ -33,14 +34,12 @@ for i =  1:nModels
     y_est_    = zeros(1,numSamples);
     idx_rand  = randperm(numSamples);
     
-    % Evaluate on Testing Points
-    for ii=1:numSamples
-        X_test_    = X_test(idx_rand(ii),:);
-        y_test_(ii) = y_test(idx_rand(ii),:);
-        
-        % Test Learnt Model
-        [y_est_(ii)] = svm_classifier(X_test_, y_test_(ii), [], test_model);
-    end
+    % Evaluate on Testing Points   
+    X_test_ = X_test(1:numSamples,:);
+    y_test_ = y_test(1:numSamples,:);
+    
+    % Test Learnt Model
+    [y_est_] = svm_classifier(X_test_, y_test_, [], test_model);
     
     % Compute Classifier Test Stats
     [stats] = class_performance(y_test_,y_est_);
@@ -51,13 +50,25 @@ end
 
 %% Plot of model performance stats on test set
 figure('Color',[1 1 1])
-plot(model_sizes, ACC, '--og','LineWidth',2); hold on;
-plot(model_sizes, F1,  '--vk','LineWidth',2); hold on;
-plot(model_sizes, 1- FPR, '--dr','LineWidth',2); hold on;
-plot(model_sizes, TPR, '--sb','LineWidth',2); 
-xlabel('$N_{sv}$','Interpreter','Latex','FontSize',14);
-ylabel('Performance Measure','Interpreter','Latex','FontSize',14)
-set(gca,'xscale','log')
-xlim([1000 20000])
-legend({'ACC','F1','1-FPR','TPR'},'Interpreter','Latex', 'FontSize',14)
+train_sizes = [13000 27000 40000 54000 135000];    
+[ax,hline1,hline2]=plotyy([train_sizes' train_sizes' train_sizes' train_sizes'],[ACC' F1' (1-FPR)' TPR'], train_sizes', 2*model_sizes');
+delete(hline1);
+delete(hline2);
+hold(ax(1),'on');
+plot(train_sizes, ACC, '--oc','LineWidth',2,'MarkerFaceColor','c'); hold on;
+plot(train_sizes, F1,  '--vk','LineWidth',2,'MarkerFaceColor','k'); hold on;
+plot(train_sizes, 1-FPR, '--dr','LineWidth',2,'MarkerFaceColor','r'); hold on;
+plot(train_sizes, TPR, '--sm','LineWidth',2,'MarkerFaceColor','m'); hold on;
+ylim([0.94 1])
+% xlim([11000 140000])
+% set(gca,'xscale','log')
+
+hold(ax(2),'on');
+plot(ax(2),train_sizes, model_sizes, '--dg','LineWidth',2, 'MarkerFaceColor','g'); hold on;
+
+xlabel('Training Set Size','Interpreter','Latex','FontSize',20);
+ylabel('Performance Measure','Interpreter','Latex','FontSize',20)
+% set(gca,'xscale','log')
+% xlim([11000 140000])
+legend({'ACC','F1','1-FPR','TPR','$N_{sv}$'},'Interpreter','Latex', 'FontSize',14)
 grid on
