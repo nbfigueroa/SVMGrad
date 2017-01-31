@@ -65,8 +65,8 @@ int
 main (int argc, char **argv)
 {
     string package_path  = "/home/nbfigueroa/dev/catkin_ws/src/SVMGrad/";
-    string modelFilename = package_path + "matlab/models/36D-13k-Optimal-Model-Fender.txt";
-    string dataFilename  = package_path + "matlab/models/36D-13k-Data-Fender.txt";
+    string modelFilename = package_path + "matlab/models/Fender/36D-054k-Optimal-Model-Fender.txt";
+    string dataFilename  = package_path + "matlab/models/Fender/36D-054k-Data-Fender.txt";
 
     SVMGrad svm_(modelFilename);
     SVMTestData data_;
