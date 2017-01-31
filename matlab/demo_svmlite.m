@@ -1,11 +1,11 @@
 %% SVM-light MEX-interface
 tic
-model_svmlight = svmlearn(X_train, y_train,'-t 2 -c 223 -g 1.2467');
+model_svmlight = svmlearn(X, labels,'-t 2 -c 100 -g 50');
 toc
 %% Make SVM-light model to SVMGrad
 
 svmgrad_light         = [];
-svmgrad_light.D       = size(X_train,2);
+svmgrad_light.D       = size(X,2);
 svmgrad_light.nSV     = model_svmlight.sv_num-1;
 svmgrad_light.b       = -model_svmlight.b;
 svmgrad_light.sigma   = options.sigma;

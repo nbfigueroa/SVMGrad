@@ -23,7 +23,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load 2D example Dataset and model learned through libSVM
 clc; clear all; close all;
-load('./models/2d-example2.mat')
+load('./models/2d-examples/2d-example2.mat')
 
 %% Create Simplified Struct Model for SVMGrad from libSVM Model
 svmgrad = [];
@@ -37,7 +37,7 @@ svmgrad.SVs     = full(model.SVs)';
 %% Visualize Decision Function and gradients (Only for 2d dataset)
 plot_svmgrad_boundary(X, labels, svmgrad,  'draw');
 
-%% Sample classifier and gradient evaluation for on query point
+%% Sample classifier and gradient evaluation for one query point
 query_point = X(randi(length(X)),:)';
 tic;
 class       = calculateClass( svmgrad,  query_point)
