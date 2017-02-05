@@ -19,8 +19,12 @@ FPR = (FP) / (FP + TN);
 % True Positive Rate (Sensitivity)
 TPR = (TP) / (TP + FN);
 
+% True Negative Rate (Specificity)
+TNR = (TN) / (TN + FP);
+
 stats.ACC = ACC;
 stats.F1  = F1;
 stats.FPR = FPR;
 stats.TPR = TPR;
+stats.TNR = TNR;
 end
