@@ -115,6 +115,7 @@ script:
   - sudo apt-get update
   - sudo apt-get install libmlpack-dev
   - sudo apt-get install libarmadillo-dev
+  - source /opt/ros/$ROS_DISTRO/setup.bash
   - source devel/setup.bash
   - rospack profile
   - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS )
