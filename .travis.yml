@@ -111,6 +111,8 @@ before_script:
 script:
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - source devel/setup.bash
+  - rospack profile
+  - cd ~/catkin_ws
   - sudo add-apt-repository ppa:titas-chanda/armadillo -y
   - sudo apt-get update
   - sudo apt-get install libmlpack-dev
