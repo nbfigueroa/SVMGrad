@@ -109,11 +109,12 @@ before_script:
 # fails. Running `catkin_test_results` aggregates all the results and returns
 # non-zero when a test fails (which notifies Travis the build failed).
 script:
+  - cd ~/catkin_ws
+  - catkin_make
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - source devel/setup.bash
   - rospack profile
   - cd ~/catkin_ws
-  - cd ..
   - sudo add-apt-repository ppa:titas-chanda/armadillo -y
   - sudo apt-get update
   - sudo apt-get install libmlpack-dev
