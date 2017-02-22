@@ -110,7 +110,7 @@ before_script:
 # non-zero when a test fails (which notifies Travis the build failed).
 script:
   - cd ~/catkin_ws
-  - catkin_make
+  - pwd
   - source /opt/ros/$ROS_DISTRO/setup.bash
   - source devel/setup.bash
   - rospack profile
