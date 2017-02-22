@@ -119,7 +119,6 @@ script:
   - sudo apt-get update
   - sudo apt-get install libmlpack-dev
   - sudo apt-get install libarmadillo-dev
-  - sudo apt-get install ros-indigo-pr2-mechanism-model ros-indigo-pr2-controller-manager ros-indigo-control-toolbox ros-indigo-pr2-mechanism-controllers
   - source devel/setup.bash
   - rospack profile
   - catkin_make $( [ -f $CATKIN_OPTIONS ] && cat $CATKIN_OPTIONS )
