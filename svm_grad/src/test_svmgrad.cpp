@@ -65,8 +65,13 @@ int
 main (int argc, char **argv)
 {
     string package_path  = "/home/nbfigueroa/dev/catkin_ws/src/SVMGrad/";
+    // libSVM models
     string modelFilename = package_path + "matlab/models/Fender/36D-054k-Optimal-Model-Fender.txt";
     string dataFilename  = package_path + "matlab/models/Fender/36D-054k-Data-Fender.txt";
+
+    // Sparse CPSP models
+    modelFilename = package_path + "matlab/models/Fender/36D-540k-CPSP-Model-Fender.txt";
+    dataFilename  = package_path + "matlab/models/Fender/36D-540k-CPSP-Data-Fender.txt";
 
     SVMGrad svm_(modelFilename);
     SVMTestData data_;
