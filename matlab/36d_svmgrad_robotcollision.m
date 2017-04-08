@@ -23,7 +23,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load 36D Robot Self-Collision Dataset and model learned through libSVM
 clc; clear all; close all;
-load('./models/FenderwHands/36D-Pos-15k-Optimal-Model-FenderwHands.mat')
+load('./models/Innovation-Award/36D-Pos-12k-Optimal-Model-Innovation.mat')
 
 %% Create Simplified Struct Model for SVMGrad from libSVM Model
 svmgrad = [];
@@ -43,11 +43,11 @@ gradient    = calculateGammaDerivative( svmgrad, query_point)
 toc;
 
 %% Write SVMGrad Struct to .txt file for C++ Usage
-filename = './models/FenderwHands/36D-15k-Optimal-Model-FenderwHands.txt';
+filename = './models/Innovation-Award/36D-12k-Optimal-Model-Innovation.txt';
 writeSVMGrad(svmgrad, filename);
 
 %% Write Testing Data for SVMGRad
-filename = './models/Fender/36D-15k-Data-FenderwHands.txt';
+filename = './models/Innovation-Award/36D-12k-Optimal-Data-Innovation.txt';
 ntest    = 500;
 randidx  = randperm(length(X_train));
 x_test   = X_train(randidx(1:ntest),:)';

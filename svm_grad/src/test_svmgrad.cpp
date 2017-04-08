@@ -64,14 +64,14 @@ void loadTestData(string& f_SVMTestData, SVMTestData& data)
 int
 main (int argc, char **argv)
 {
-    string package_path  = "/home/nbfigueroa/dev/catkin_ws/src/SVMGrad/";
+    string package_path  = "/home/nbfigueroa/proj/catkin_ws/src/SVMGrad/";
     // libSVM models
-    string modelFilename = package_path + "matlab/models/Fender/36D-054k-Optimal-Model-Fender.txt";
-    string dataFilename  = package_path + "matlab/models/Fender/36D-054k-Data-Fender.txt";
+    string modelFilename = package_path + "matlab/models/Innovation-Award/36D-12k-Optimal-Model-Innovation.txt";
+    string dataFilename  = package_path + "matlab/models/Innovation-Award/36D-12k-Optimal-Data-Innovation.txt";
 
     // Sparse CPSP models
-    modelFilename = package_path + "matlab/models/Fender/36D-540k-CPSP-Model-Fender.txt";
-    dataFilename  = package_path + "matlab/models/Fender/36D-540k-CPSP-Data-Fender.txt";
+    // modelFilename = package_path + "matlab/models/Fender/36D-540k-CPSP-Model-Fender.txt";
+    // dataFilename  = package_path + "matlab/models/Fender/36D-540k-CPSP-Data-Fender.txt";
 
     SVMGrad svm_(modelFilename);
     SVMTestData data_;
