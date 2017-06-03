@@ -22,7 +22,7 @@ model.y     : Labels corresponding to SVs                    [nSV]
 model.SVs   : Set of Support Vectors                         [DxnSV]
 ```
 
-##Matlab Usage
+## Matlab Usage
 In the ```./matlab/``` folder you can find an example script together with sample 2d datasets and learnt models (through libSVM). Make sure to add all subfolders to your current directory and run the following script:
 ```
 2d_svmgrad_example.m
@@ -33,7 +33,7 @@ This should generate the following plot, which shows the svm ```Gamma``` being e
 <img src="https://github.com/nbfigueroa/SVMGrad/blob/master/img/2d-gamma.png" width="700">
 </p>
 
-##C++ Installation (Catkin package)
+## C++ Installation (Catkin package)
 These instrutions are assuming you have a ROS environment and use catkin workspace to compile code. 
 Clone this respository in your ```./src``` folder and make sure that you have the [armadillo](http://arma.sourceforge.net/) library, you can install this by 
 ```
@@ -45,7 +45,7 @@ $ cd ~/catkin_ws/
 $ catkin_make
 ```
 
-##C++ Usage
+## C++ Usage
 First one must have an svm model in the format requested by ```svm_grad``` class, this can be generated with the ```writeSVMGradModel.m``` function in the matlab folder, then:
 ```
 SVMGrad svm_(modelFilename);
