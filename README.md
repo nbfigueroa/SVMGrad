@@ -1,5 +1,5 @@
 # SVMGrad
-[![Build Status](https://travis-ci.org/nbfigueroa/SVMGrad.svg?branch=master)](https://travis-ci.org/nbfigueroa/SVMGrad)
+[![Build Status](https://travis-ci.org/nbfigueroa/SVMGrad.svg?branch=master)](https://travis-ci.org/nbfigueroa/SVMGrad) [![DOI](https://zenodo.org/badge/72996644.svg)](https://zenodo.org/badge/latestdoi/72996644)
 
 SVMGrad is a compact library used to evaluate the decision function of a
 Gaussian RBF Kernel Support Vector Machine, as well as the its first Derivative (Gradient). 
