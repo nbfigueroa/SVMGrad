@@ -65,13 +65,14 @@ int
 main (int argc, char **argv)
 {
     string package_path  = "/home/nbfigueroa/proj/catkin_ws/src/SVMGrad/";
+
     // libSVM models
-    string modelFilename = package_path + "matlab/models/Innovation-Award/36D-12k-Optimal-Model-Innovation.txt";
-    string dataFilename  = package_path + "matlab/models/Innovation-Award/36D-12k-Optimal-Data-Innovation.txt";
+    // string modelFilename = package_path + "matlab/models/Innovation-Award/36D-12k-Optimal-Model-Innovation.txt";
+    // string dataFilename  = package_path + "matlab/models/Innovation-Award/36D-12k-Optimal-Data-Innovation.txt";
 
     // Sparse CPSP models
-    // modelFilename = package_path + "matlab/models/Fender/36D-540k-CPSP-Model-Fender.txt";
-    // dataFilename  = package_path + "matlab/models/Fender/36D-540k-CPSP-Data-Fender.txt";
+    string modelFilename = package_path + "matlab/models/NewIIWA-Setup-Feb18/36D-240k-CPSP-Model-NewIIWASetup.txt";
+    string dataFilename  = package_path + "matlab/models//NewIIWA-Setup-Feb18/36D-240k-CPSP-Data-NewIIWASetup.txt";
 
     SVMGrad svm_(modelFilename);
     SVMTestData data_;
