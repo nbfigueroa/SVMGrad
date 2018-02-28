@@ -22,8 +22,9 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Load 36D Robot Self-Collision Dataset and model learned through libSVM
+%% and training data, or a subset of it to test the code
 clc; clear all; close all;
-load('./models/Innovation-Award/36D-Pos-12k-Optimal-Model-Innovation.mat')
+load('./models/NewIIWA-Setup-Feb18/NewIIWASetup-Feb18-SparseModel-2.mat')
 
 %% Create Simplified Struct Model for SVMGrad from libSVM Model
 svmgrad = [];
