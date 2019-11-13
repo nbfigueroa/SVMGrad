@@ -74,7 +74,7 @@ main (int argc, char **argv)
     string modelFilename = package_path + "matlab/models/NewIIWA-Setup-Feb18/36D-240k-CPSP-Model-NewIIWASetup.txt";
     string dataFilename  = package_path + "matlab/models//NewIIWA-Setup-Feb18/36D-240k-CPSP-Data-NewIIWASetup.txt";
 
-    SVMGrad svm_(modelFilename);
+    SVMGrad::SVMGrad svm_(modelFilename);
     SVMTestData data_;
     loadTestData(dataFilename,data_);
 
